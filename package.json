@@ -1,0 +1,23 @@
+{
+  "name": "cypress-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iromashko/cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iromashko/cypress/issues"
+  },
+  "homepage": "https://github.com/iromashko/cypress#readme",
+  "devDependencies": {
+    "cypress": "^5.0.0"
+  }
+}
