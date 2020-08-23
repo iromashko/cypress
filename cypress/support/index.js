@@ -1,4 +1,5 @@
 /// <reference types="Cypress" />
+require('cypress-xpath');
 
 // ***********************************************************
 // This example support/index.js is processed and

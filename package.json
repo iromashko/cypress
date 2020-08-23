@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/iromashko/cypress#readme",
   "devDependencies": {
-    "cypress": "^5.0.0"
+    "cypress": "^5.0.0",
+    "cypress-xpath": "^1.6.0"
   }
 }
