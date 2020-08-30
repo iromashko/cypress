@@ -9,7 +9,12 @@ describe('Chain of commands', () => {
   });
   it('First item using text', () => {
     cy.visit('https://www.automationteststore.com/');
-    cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click();
+    cy.get('.prdocutname')
+      .contains('Skinsheen Bronzer Stick')
+      .click()
+      .then(function (itemHeaderText) {
+        console.log(`Selected item: ${itemHeaderText.text()}`);
+      });
   });
   it('First item using index', () => {
     cy.visit('https://www.automationteststore.com/');
