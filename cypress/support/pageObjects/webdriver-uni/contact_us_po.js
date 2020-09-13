@@ -12,7 +12,7 @@ class ContactUs_PO {
     cy.get('[name="email"]').type(email);
     cy.get('textarea.feedback-input').type(body);
     cy.get('[type="submit"]').click();
-    cy.get($selector).contains(textToLocate);
+    cy.get($selector).contains(textToLocate, { timeout: 50000 });
   }
 }
 
