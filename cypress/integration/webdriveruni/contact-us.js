@@ -7,12 +7,15 @@ describe('Test Contact Us form via WebdriverUni', function () {
   const contactUs_PO = new ContactUs_PO();
   const homepage_PO = new Homepage_PO();
 
+  before(() => {
+    cy.fixture('example').then(function (data) {
+      globalThis.data = data;
+    });
+  });
+
   beforeEach(function () {
     homepage_PO.visitHomepage();
     homepage_PO.clickOn_ContactUs_Button();
-    cy.fixture('example').then(function (data) {
-      this.data = data;
-    });
   });
   it('Submit form success', function () {
     cy.document().should('have.property', 'charset').and('eq', 'UTF-8');
@@ -20,17 +23,17 @@ describe('Test Contact Us form via WebdriverUni', function () {
     cy.url().should('include', 'contactus');
     contactUs_PO.contactFormSubmission(
       Cypress.env('first_name'),
-      this.data.last_name,
-      this.data.email,
-      this.data.body,
+      globalThis.data.last_name,
+      globalThis.data.email,
+      globalThis.data.body,
       'h1',
       'Thank You for your Message!'
     );
   });
   it('Submit form error', function () {
     contactUs_PO.contactFormSubmission(
-      this.data.first_name,
-      this.data.last_name,
+      globalThis.data.first_name,
+      globalThis.data.last_name,
       ' ',
       'Hello World!',
       'body',
