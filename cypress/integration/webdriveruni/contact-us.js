@@ -1,14 +1,15 @@
 /// <reference types="Cypress" />
 
-describe('Test Contact Us form via WebdriverUni', () => {
+describe('Test Contact Us form via WebdriverUni', function () {
   beforeEach(function () {
+    cy.visit(
+      Cypress.env('webdriveruni_homepage') + '/Contact-Us/contactus.html'
+    );
     cy.fixture('example').then(function (data) {
       this.data = data;
     });
   });
   it('Submit form success', function () {
-    cy.visit('http://www.webdriveruniversity.com');
-    cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
     cy.document().should('have.property', 'charset').and('eq', 'UTF-8');
     cy.title().should('include', 'WebDriver | Contact Us');
     cy.url().should('include', 'contactus');
@@ -22,8 +23,6 @@ describe('Test Contact Us form via WebdriverUni', () => {
     );
   });
   it('Submit form error', function () {
-    cy.visit('http://www.webdriveruniversity.com/');
-    cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
     cy.contactFormSubmission(
       this.data.first_name,
       this.data.last_name,

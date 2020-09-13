@@ -20,6 +20,14 @@
 // -- This is a dual command --
 // Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
 //
+
+Cypress.Commands.add('navigateToWebdriverUniPage', () => {
+  cy.visit('/');
+});
+Cypress.Commands.add('navigateToWebdriverUni_CheckboxPage', () => {
+  cy.visit('/' + 'Dropdown-Checkboxes-RadioButtons/index.html');
+});
+
 Cypress.Commands.add('selectProduct', (productName) => {
   cy.get('.fixed_wrapper .prdocutname').each(($el, idx, $list) => {
     if ($el.text().includes(productName)) {
