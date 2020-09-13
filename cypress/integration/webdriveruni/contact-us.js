@@ -1,10 +1,14 @@
 /// <reference types="Cypress" />
+import Homepage_PO from '../../support/pageObjects/webdriver-uni/home_page_po.js';
+import ContactUs_PO from '../../support/pageObjects/webdriver-uni/contact_us_po.js';
 
 describe('Test Contact Us form via WebdriverUni', function () {
+  const contactUs_PO = new ContactUs_PO();
+  const homepage_PO = new Homepage_PO();
+
   beforeEach(function () {
-    cy.visit(
-      Cypress.env('webdriveruni_homepage') + '/Contact-Us/contactus.html'
-    );
+    homepage_PO.visitHomepage();
+    homepage_PO.clickOn_ContactUs_Button();
     cy.fixture('example').then(function (data) {
       this.data = data;
     });
@@ -13,7 +17,7 @@ describe('Test Contact Us form via WebdriverUni', function () {
     cy.document().should('have.property', 'charset').and('eq', 'UTF-8');
     cy.title().should('include', 'WebDriver | Contact Us');
     cy.url().should('include', 'contactus');
-    cy.contactFormSubmission(
+    contactUs_PO.contactFormSubmission(
       Cypress.env('first_name'),
       this.data.last_name,
       this.data.email,
@@ -23,7 +27,7 @@ describe('Test Contact Us form via WebdriverUni', function () {
     );
   });
   it('Submit form error', function () {
-    cy.contactFormSubmission(
+    contactUs_PO.contactFormSubmission(
       this.data.first_name,
       this.data.last_name,
       ' ',
