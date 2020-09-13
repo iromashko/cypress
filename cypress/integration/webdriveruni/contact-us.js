@@ -13,7 +13,7 @@ describe('Test Contact Us form via WebdriverUni', () => {
     cy.title().should('include', 'WebDriver | Contact Us');
     cy.url().should('include', 'contactus');
     cy.contactFormSubmission(
-      this.data.first_name,
+      Cypress.env('first_name'),
       this.data.last_name,
       this.data.email,
       this.data.body,
