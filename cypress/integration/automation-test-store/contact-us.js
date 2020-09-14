@@ -2,6 +2,7 @@
 
 describe('Test Contact Us form via Automation Test Store', () => {
   before(function () {
+    cy.viewport(550, 750);
     cy.fixture('user-details').as('user');
   });
   it('Submit form success', function () {
