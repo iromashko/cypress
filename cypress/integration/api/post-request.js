@@ -2,12 +2,16 @@
 
 describe('Post Request', () => {
   let titleOfPosts = new Array();
+  let randomTitle =
+    Math.random().toString(36).substring(1) +
+    Math.random().toString(36).substring(1);
+
   it('Create a new post via /posts api', () => {
     cy.request({
       method: 'POST',
       url: 'http://localhost:3000/posts',
       body: {
-        title: 'Lorem Ipsum',
+        title: randomTitle,
         author: 'Iromashko',
       },
     }).then((response) => {
@@ -31,7 +35,7 @@ describe('Post Request', () => {
       })
       .then(() => {
         let latestPost = titleOfPosts[titleOfPosts.length - 1];
-        expect(latestPost).to.eq('Lorem Ipsum');
+        expect(latestPost).to.eq(randomTitle);
       });
   });
 });
