@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "triggerAllTests-headless": "npx cypress run",
+    "triggerAllTests-headed": "npx cypress run --headed",
+    "triggerAllTests-chrome": "npx cypress --browser chrome",
+    "triggerAllTests-dashboard": "npx cypress run --record --key e4b139dc-f797-45b1-b94a-d4d6ffe816c6",
+    "triggerAllTests-webdriveruni": "npx cypress run --spec cypress/integration/webdriveruni/*"
   },
   "repository": {
     "type": "git",
