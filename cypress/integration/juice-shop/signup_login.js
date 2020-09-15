@@ -6,11 +6,14 @@ describe('Signup Test', () => {
   const password = 'Password1';
   const securityAnswer = '1337';
 
-  it('Test valid signup', () => {
+  beforeEach(() => {
     cy.visit('http://localhost:3000/');
     cy.get('.cdk-overlay-backdrop').click(-50, -50, { force: true });
     cy.get('#navbarAccount').click();
     cy.get('#navbarLoginButton').click();
+  });
+
+  it('Test valid signup', () => {
     cy.get('#newCustomerLink')
       .contains('Not yet a customer?')
       .click({ force: true });
@@ -26,5 +29,12 @@ describe('Signup Test', () => {
     cy.get('.mat-snack-bar-container').contains(
       'Registration completed successfully. You can now log in.'
     );
+  });
+
+  it('Test valid login', () => {
+    cy.get('#email').type(email);
+    cy.get('#password').type(password);
+    cy.get('#loginButton').click();
+    cy.get('.fa-layers-counter').contains('0');
   });
 });
