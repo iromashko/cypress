@@ -31,11 +31,20 @@ describe('Signup', () => {
   });
 
   it('Test valid login', () => {
+    // cy.server();
+    // cy.route({
+    //   method: 'GET',
+    //   url: '**/tags',
+    //   fixture: 'fixture:popularTags.json',
+    // }).as('getTags');
+
     cy.get('[data-cy=login]').click();
     cy.get('[data-cy="login:email"]').type(email);
     cy.get('[data-cy="login:password"]').type(password);
     cy.get('[data-cy="login:submit"]').click();
 
     cy.get('[data-cy="profileName"]').contains(username);
+
+    cy.get('.tag-list').should('be.visible');
   });
 });
