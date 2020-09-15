@@ -3,6 +3,9 @@
 describe('Signup', () => {
   let randomString = Math.random().toString(36).substring(2);
   it('Signup User', () => {
+    // cy.server();
+    // cy.route({ method: 'POST', url: '**/users' }).as('newUser');
+
     cy.visit(Cypress.env('mediumUrl'));
     cy.get('[data-cy=register]').click();
     cy.get('[data-cy="register:username"]').type(`Auto_${randomString}`);
@@ -11,5 +14,12 @@ describe('Signup', () => {
     );
     cy.get('[data-cy="register:password"]').type('Password1');
     cy.get('[data-cy="register:submit"]').click();
+
+    // cy.wait('@newUser');
+    // cy.get('@newUser').should((xhr) => {
+    //   expect(xhr.status).to.eq(200);
+    // });
+
+    cy.get('[data-cy="profileName"]').contains(randomString);
   });
 });
