@@ -3,11 +3,10 @@
   "chromeWebSecurity": false,
   "defaultCommandTimeout": 10000,
   "pageLoadTimeout": 30000,
-  "viewportHeight": 1080,
-  "viewportWidth": 1920,
   "env": {
     "webdriveruni_homepage": "https://www.webdriveruniversity.com/",
-    "first_name": "sara"
+    "first_name": "sara",
+    "mediumUrl": "localhost:4200"
   },
   "projectId": "q8hzxv"
 }
